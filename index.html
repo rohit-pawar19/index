@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171512">
+  <meta name="description" content="Naaree brings thoughtful at-home salon care to Wakad, Pune. Choose your ritual, pin your address and book on WhatsApp.">
+  <title>Naaree — Beauty, brought home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#171512;
+      --muted:#716b64;
+      --paper:#f7f3ed;
+      --paper-2:#eee7de;
+      --white:#fffdf9;
+      --coral:#ef633d;
+      --coral-dark:#c94626;
+      --lavender:#d9ceff;
+      --sage:#c9dcc8;
+      --yellow:#f7d77e;
+      --line:rgba(23,21,18,.13);
+      --shadow:0 24px 70px rgba(32,24,14,.12);
+      --radius-lg:32px;
+      --radius-md:20px;
+      --radius-sm:12px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--lavender);color:var(--ink)}
+    .container{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+    .serif{font-family:'Playfair Display',Georgia,serif}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--coral-dark);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    .eyebrow::before{content:'';width:7px;height:7px;background:var(--coral);border-radius:50%}
+    .muted{color:var(--muted)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Header */
+    .topline{background:var(--ink);color:#f9f0e5;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .topline .container{display:flex;justify-content:space-between;gap:18px;padding:9px 0}
+    .topline span:last-child{opacity:.6}
+    .site-header{position:sticky;top:0;z-index:30;background:rgba(247,243,237,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(23,21,18,.08)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+    .brand-mark{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:var(--coral);color:var(--white);font-family:Georgia,serif;font-style:italic;font-size:24px;line-height:1;transform:rotate(-8deg)}
+    .brand-copy{display:flex;flex-direction:column;line-height:1}
+    .brand-name{font-size:18px;font-weight:700;letter-spacing:.06em}
+    .brand-sub{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+    .nav-links{display:flex;align-items:center;gap:29px;font-size:13px;font-weight:600;color:#5f5a54}
+    .nav-links a{transition:color .2s ease}
+    .nav-links a:hover{color:var(--coral-dark)}
+    .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;min-height:47px;padding:0 21px;font-size:13px;font-weight:700;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+    .nav-cta{background:var(--ink);color:var(--white)}
+    .nav-cta:hover,.button:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(23,21,18,.16)}
+    .nav-toggle{display:none;border:1px solid var(--line);background:var(--white);width:42px;height:42px;border-radius:50%}
+    .nav-toggle svg{width:18px}
+
+    /* Hero */
+    .hero{padding:57px 0 72px;overflow:hidden;position:relative}
+    .hero::before{content:'';position:absolute;width:600px;height:600px;top:-240px;left:-260px;border-radius:50%;background:rgba(217,206,255,.58);filter:blur(2px);pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(420px,.98fr);gap:72px;align-items:center}
+    .hero-copy{padding:20px 0 25px}
+    .hero h1{font-size:clamp(48px,6.4vw,84px);line-height:.98;letter-spacing:-.065em;font-weight:700;max-width:680px;margin:21px 0 23px}
+    .hero h1 em{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacing:-.07em;color:var(--coral-dark)}
+    .hero-lead{max-width:510px;color:#635d56;font-size:17px;line-height:1.7}
+    .hero-actions{display:flex;align-items:center;gap:13px;margin-top:32px;flex-wrap:wrap}
+    .button-primary{background:var(--coral);color:#fffaf4;box-shadow:0 13px 25px rgba(239,99,61,.2)}
+    .button-secondary{background:transparent;border:1px solid var(--line);color:var(--ink)}
+    .button-secondary:hover{background:var(--white)}
+    .arrow{font-size:18px;line-height:0}
+    .hero-foot{display:flex;gap:25px;align-items:center;margin-top:35px;padding-top:23px;border-top:1px solid var(--line);max-width:530px}
+    .hero-foot-item{display:flex;gap:9px;align-items:center;font-size:12px;color:#716b64}
+    .hero-foot-item strong{display:block;font-size:13px;color:var(--ink);margin-bottom:2px}
+    .mini-icon{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:var(--ink);flex:none}
+    .mini-icon svg{width:13px;height:13px}
+
+    .hero-art{position:relative;min-height:580px}
+    .hero-photo{position:absolute;inset:0 28px 20px 40px;border-radius:170px 170px 28px 28px;overflow:hidden;background:linear-gradient(145deg,#d5c1af,#9e786a)}
+    .hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,21,18,0) 48%,rgba(23,21,18,.42) 100%)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+    .hero-card{position:absolute;left:0;bottom:0;width:230px;padding:18px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);border:1px solid rgba(23,21,18,.08)}
+    .hero-card-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-dark)}
+    .hero-card h3{font-size:21px;line-height:1.08;margin:13px 0 15px;letter-spacing:-.04em}
+    .hero-card-row{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+    .hero-card-row strong{color:var(--ink);font-size:13px}
+    .scribble{position:absolute;right:-5px;top:24px;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--coral-dark);font-family:'Playfair Display',Georgia,serif;font-size:14px;font-style:italic;transform:rotate(8deg)}
+    .scribble svg{width:68px;height:35px;fill:none;stroke:var(--coral-dark);stroke-width:1.4}
+    .art-sticker{position:absolute;right:0;bottom:80px;width:102px;height:102px;border-radius:50%;display:grid;place-items:center;text-align:center;background:var(--yellow);font-size:11px;font-weight:700;line-height:1.2;transform:rotate(10deg);box-shadow:0 8px 22px rgba(23,21,18,.12)}
+    .art-sticker span{display:block;font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:500}
+
+    /* Intro rail */
+    .intro-rail{background:var(--ink);color:var(--white);padding:19px 0}
+    .intro-rail .container{display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .rail-copy{font-size:13px;letter-spacing:.02em}
+    .rail-copy strong{color:var(--yellow);font-weight:700}
+    .rail-link{display:inline-flex;align-items:center;gap:9px;color:#fff8ef;font-size:12px;font-weight:700;white-space:nowrap}
+    .rail-link span{display:grid;place-items:center;width:22px;height:22px;border:1px solid rgba(255,255,255,.4);border-radius:50%}
+
+    /* Shared section */
+    .section{padding:110px 0}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:39px}
+    .section-heading h2{font-size:clamp(35px,4.7vw,57px);line-height:1.03;letter-spacing:-.06em;margin-top:14px;max-width:620px}
+    .section-heading h2 em{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacing:-.06em}
+    .section-heading p{max-width:340px;color:var(--muted);font-size:14px;line-height:1.7}
+
+    /* Editorial cards */
+    .edit-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:16px}
+    .edit-card{min-height:420px;border-radius:var(--radius-lg);overflow:hidden;position:relative;color:var(--white);background:#ac8c77}
+    .edit-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .edit-card:hover img{transform:scale(1.04)}
+    .edit-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,21,18,0) 25%,rgba(23,21,18,.74) 100%)}
+    .edit-card-content{position:absolute;z-index:1;left:25px;right:25px;bottom:23px}
+    .edit-card-content .tag{display:inline-flex;padding:6px 9px;background:rgba(255,253,249,.18);border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+    .edit-card h3{font-size:28px;line-height:1.02;letter-spacing:-.05em;margin:12px 0 7px}
+    .edit-card p{max-width:250px;font-size:12px;line-height:1.55;color:rgba(255,255,255,.78)}
+    .edit-card:first-child{background:var(--coral)}
+    .edit-card:first-child .edit-card-content{max-width:290px}
+    .edit-card:first-child h3{font-size:39px}
+    .edit-card:first-child img{object-position:57% center}
+    .edit-card:nth-child(2){background:var(--lavender);color:var(--ink)}
+    .edit-card:nth-child(2)::after{background:linear-gradient(180deg,rgba(23,21,18,0) 25%,rgba(23,21,18,.57) 100%)}
+    .edit-card:nth-child(3){background:var(--sage);color:var(--ink)}
+
+    /* How it works */
+    .soft-section{background:var(--paper-2)}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{position:relative;padding:30px 29px 32px;border:1px solid rgba(23,21,18,.11);border-radius:var(--radius-md);background:rgba(255,253,249,.63);min-height:250px}
+    .step-number{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:50px;line-height:1;color:var(--coral)}
+    .step-icon{position:absolute;right:25px;top:28px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--white)}
+    .step-icon svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6}
+    .step h3{font-size:19px;letter-spacing:-.03em;margin:32px 0 8px}
+    .step p{max-width:240px;font-size:13px;line-height:1.65;color:var(--muted)}
+
+    /* Services */
+    .service-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:45px;align-items:start}
+    .service-aside{position:sticky;top:104px}
+    .service-aside p{font-size:13px;line-height:1.65;color:var(--muted);margin:13px 0 24px}
+    .category-list{display:flex;flex-direction:column;gap:6px}
+    .category-btn{display:flex;align-items:center;justify-content:space-between;border:0;background:transparent;padding:10px 12px;border-radius:10px;text-align:left;font-size:13px;color:var(--muted);transition:background .2s,color .2s}
+    .category-btn:hover,.category-btn.active{background:var(--ink);color:var(--white)}
+    .category-btn span:last-child{font-size:10px;opacity:.7}
+    .service-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}
+    .service-toolbar h3{font-size:23px;letter-spacing:-.04em}
+    .service-toolbar p{font-size:12px;color:var(--muted)}
+    .service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+    .service-item{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:93px;padding:16px 16px 16px 18px;background:var(--white);border:1px solid rgba(23,21,18,.08);border-radius:16px;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .service-item:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(23,21,18,.08)}
+    .service-item.selected{border-color:var(--coral);box-shadow:0 0 0 2px rgba(239,99,61,.12)}
+    .service-item-main{min-width:0}
+    .service-item h4{font-size:14px;line-height:1.25;letter-spacing:-.02em}
+    .service-item p{font-size:11px;color:var(--muted);margin-top:5px}
+    .service-price{display:block;margin-top:7px;font-size:13px;font-weight:700;color:var(--coral-dark)}
+    .add-service{width:34px;height:34px;display:grid;place-items:center;flex:none;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);transition:background .2s,color .2s,border .2s}
+    .add-service svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+    .service-item.selected .add-service{background:var(--coral);border-color:var(--coral);color:var(--white)}
+    .service-item.selected .add-service .plus{display:none}
+    .service-item.selected .add-service .check{display:block}
+    .add-service .check{display:none}
+    .service-empty{padding:32px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);font-size:13px}
+
+    /* Booking */
+    .booking-section{padding-top:105px}
+    .booking-shell{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:46px;align-items:start}
+    .booking-intro{padding-top:14px}
+    .booking-intro h2{font-size:clamp(38px,5vw,64px);line-height:.99;letter-spacing:-.065em;margin:16px 0 20px;max-width:600px}
+    .booking-intro h2 em{font-family:'Playfair Display',Georgia,serif;font-weight:500}
+    .booking-intro>p{max-width:470px;color:var(--muted);font-size:15px;line-height:1.7}
+    .booking-note{display:flex;align-items:flex-start;gap:13px;margin-top:36px;padding-top:19px;border-top:1px solid var(--line);max-width:470px;color:var(--muted);font-size:12px}
+    .booking-note svg{width:18px;height:18px;flex:none;stroke:var(--coral-dark);fill:none;stroke-width:1.8}
+    .booking-card{background:var(--ink);color:var(--white);padding:25px;border-radius:27px;box-shadow:var(--shadow);position:sticky;top:103px}
+    .booking-card-head{display:flex;justify-content:space-between;align-items:start;gap:15px;margin-bottom:20px}
+    .booking-card h3{font-size:22px;letter-spacing:-.04em;line-height:1.1}
+    .booking-card-head p{font-size:11px;color:rgba(255,255,255,.54);margin-top:5px}
+    .booking-badge{display:inline-flex;padding:7px 9px;border-radius:999px;background:rgba(247,215,126,.16);color:var(--yellow);font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap}
+    .booking-form{display:flex;flex-direction:column;gap:13px}
+    .form-label{display:flex;flex-direction:column;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.7)}
+    .form-control{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);border-radius:10px;color:var(--white);outline:0;padding:12px 13px;font-size:13px;transition:border .2s,background .2s}
+    .form-control::placeholder{color:rgba(255,255,255,.42)}
+    .form-control:focus{border-color:var(--yellow);background:rgba(255,255,255,.12)}
+    select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23fffdf9' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:35px}
+    select.form-control option{background:var(--ink);color:var(--white)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .address-field{position:relative}
+    .suggestions{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:10;display:none;overflow:hidden;border:1px solid rgba(23,21,18,.14);border-radius:11px;background:var(--white);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+    .suggestions.show{display:block}
+    .suggestion{display:block;width:100%;padding:11px 12px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;color:var(--ink);font-size:12px;line-height:1.35}
+    .suggestion:last-child{border-bottom:0}
+    .suggestion:hover{background:var(--paper-2)}
+    .area-status{display:none;padding:9px 10px;border-radius:9px;font-size:11px;line-height:1.4}
+    .area-status.show{display:block}
+    .area-status.info{background:rgba(217,206,255,.18);color:#e8ddff}
+    .area-status.success{background:rgba(201,220,200,.18);color:#d7f0d5}
+    .area-status.error{background:rgba(239,99,61,.18);color:#ffb29b}
+    .selected-services{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border:1px dashed rgba(255,255,255,.21);border-radius:11px;min-height:48px}
+    .selected-services p{font-size:11px;color:rgba(255,255,255,.52)}
+    .selected-services strong{font-size:12px;color:var(--yellow);white-space:nowrap}
+    .selected-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:-3px}
+    .selected-chip{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.09);font-size:10px;color:rgba(255,255,255,.78)}
+    .form-submit{width:100%;margin-top:4px;background:var(--coral);color:var(--white);min-height:52px}
+    .form-submit:hover{background:var(--coral-dark)}
+    .form-foot{font-size:10px;color:rgba(255,255,255,.43);text-align:center;line-height:1.45}
+    .form-message{display:none;padding:10px 12px;border-radius:9px;background:rgba(239,99,61,.18);color:#ffb29b;font-size:11px;line-height:1.4}
+    .form-message.show{display:block}
+
+    /* Footer */
+    .footer{background:var(--paper-2);padding:68px 0 28px}
+    .footer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;padding-bottom:44px;border-bottom:1px solid var(--line)}
+    .footer h2{font-size:clamp(36px,5vw,63px);line-height:.98;letter-spacing:-.065em;max-width:540px}
+    .footer h2 em{font-family:'Playfair Display',Georgia,serif;font-weight:500}
+    .footer-contact{display:flex;flex-direction:column;align-items:flex-end;gap:11px;font-size:12px;color:var(--muted);text-align:right}
+    .footer-contact a{color:var(--ink);font-weight:700}
+    .socials{display:flex;gap:8px;margin-top:7px}
+    .social{display:grid;place-items:center;width:35px;height:35px;border:1px solid var(--line);border-radius:50%;background:var(--white)}
+    .social svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.7}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:22px;font-size:10px;color:var(--muted);letter-spacing:.04em}
+    .footer-bottom span:last-child{text-transform:uppercase;letter-spacing:.13em}
+
+    .mobile-book{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:25;padding:7px;border:1px solid rgba(255,255,255,.15);border-radius:17px;background:rgba(23,21,18,.94);box-shadow:0 12px 32px rgba(0,0,0,.22);backdrop-filter:blur(12px)}
+    .mobile-book .button{width:100%;min-height:48px}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    :focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr;gap:32px}
+      .hero-copy{padding-bottom:0}
+      .hero-art{min-height:500px;max-width:640px;width:100%;margin-inline:auto}
+      .service-layout{grid-template-columns:1fr;gap:24px}
+      .service-aside{position:static;display:flex;align-items:end;justify-content:space-between;gap:30px}
+      .service-aside p{max-width:340px;margin:9px 0 0}
+      .category-list{flex-direction:row;overflow:auto;max-width:100%;padding-bottom:3px}
+      .category-btn{white-space:nowrap;border:1px solid var(--line);padding:9px 12px}
+      .category-btn.active{border-color:var(--ink)}
+    }
+    @media (max-width:760px){
+      body{padding-bottom:81px}
+      .container{width:min(100% - 34px,620px)}
+      .topline .container{padding:8px 0;font-size:9px}
+      .topline span:last-child{display:none}
+      .nav{height:68px}
+      .nav-links,.nav .nav-cta{display:none}
+      .nav-toggle{display:grid;place-items:center}
+      .nav.mobile-open .nav-links{display:flex;position:absolute;top:68px;left:0;right:0;padding:14px 17px 18px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;box-shadow:0 15px 22px rgba(23,21,18,.07)}
+      .nav.mobile-open .nav-links a{padding:12px 0;border-bottom:1px solid var(--line)}
+      .nav.mobile-open .nav-links a:last-child{border:0}
+      .hero{padding:39px 0 51px}
+      .hero h1{font-size:clamp(47px,14vw,73px);max-width:540px}
+      .hero-lead{font-size:15px}
+      .hero-actions{margin-top:25px}
+      .hero-actions .button{flex:1;min-width:155px}
+      .hero-foot{gap:12px;justify-content:space-between}
+      .hero-foot-item{font-size:10px;gap:5px}
+      .hero-foot-item strong{font-size:11px}
+      .mini-icon{width:22px;height:22px}
+      .hero-art{min-height:395px}
+      .hero-photo{inset:0 18px 12px 18px;border-radius:120px 120px 22px 22px}
+      .hero-card{width:190px;padding:14px;left:0}
+      .hero-card h3{font-size:17px;margin:9px 0 12px}
+      .art-sticker{width:82px;height:82px;right:-1px;bottom:46px;font-size:9px}
+      .art-sticker span{font-size:16px}
+      .scribble{right:-1px;top:0;font-size:12px}
+      .intro-rail .container{align-items:flex-start;flex-direction:column;gap:12px}
+      .section{padding:76px 0}
+      .section-heading{display:block;margin-bottom:26px}
+      .section-heading h2{font-size:42px;margin-bottom:16px}
+      .edit-grid{grid-template-columns:1fr;gap:12px}
+      .edit-card{min-height:330px}
+      .edit-card:first-child{min-height:385px}
+      .steps{grid-template-columns:1fr;gap:10px}
+      .step{min-height:198px;padding:24px}
+      .step h3{margin-top:22px}
+      .service-aside{display:block}
+      .service-aside p{max-width:430px;margin-bottom:18px}
+      .category-list{margin-inline:-17px;padding-inline:17px}
+      .service-list{grid-template-columns:1fr}
+      .service-toolbar{align-items:flex-start;flex-direction:column;gap:4px}
+      .booking-section{padding-top:73px}
+      .booking-shell{grid-template-columns:1fr;gap:28px}
+      .booking-intro{padding-top:0}
+      .booking-intro h2{font-size:46px}
+      .booking-card{position:static;padding:21px;border-radius:22px}
+      .footer{padding:58px 0 23px}
+      .footer-top{display:block;padding-bottom:30px}
+      .footer h2{font-size:47px;margin-bottom:28px}
+      .footer-contact{align-items:flex-start;text-align:left}
+      .footer-bottom{display:block;line-height:1.8}
+      .footer-bottom span{display:block}
+      .mobile-book{display:block}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"><div class="container"><span>Wakad · Pune</span><span>At-home beauty, thoughtfully done</span></div></div>
+
+  <header class="site-header">
+    <nav class="nav container" id="site-nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Naaree home"><span class="brand-mark">n</span><span class="brand-copy"><span class="brand-name">NAAREE</span><span class="brand-sub">For her, by her</span></span></a>
+      <div class="nav-links"><a href="#edit">The edit</a><a href="#how">How it works</a><a href="#services">Services</a><a href="#book">Book a visit</a></div>
+      <a class="nav-cta" href="#book">Start with a ritual <span class="arrow">↗</span></a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero"><div class="container hero-grid">
+      <div class="hero-copy reveal"><span class="eyebrow">Naaree at home</span><h1>Good hair days. <em>Great skin days.</em> All at home.</h1><p class="hero-lead">Thoughtful salon care, brought to your door in Wakad. Choose your ritual, tell us where you are and we’ll take it from there.</p><div class="hero-actions"><a class="button button-primary" href="#book">Build my visit <span class="arrow">↗</span></a><a class="button button-secondary" href="#services">Explore services</a></div><div class="hero-foot"><div class="hero-foot-item"><span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></span><span><strong>Wakad, Pune</strong>Local doorstep care</span></div><div class="hero-foot-item"><span class="mini-icon" style="background:var(--lavender)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.2a7.6 7.6 0 0 1-8 7.6 8.4 8.4 0 0 1-3.4-.7L4 19l.9-4.1a7.7 7.7 0 0 1-.8-3.5 7.6 7.6 0 1 1 15.9-.2Z"/><path d="M8.4 9.2c.3 2.4 2 4.2 4.4 4.5l1.4-1.3 1.8.8"/></svg></span><span><strong>Easy WhatsApp booking</strong>No app, no fuss</span></div></div></div>
+      <div class="hero-art reveal"><div class="hero-photo"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=86" alt="A calm, sunlit salon interior"></div><div class="hero-card"><div class="hero-card-top"><span>Today’s reset</span><span>01</span></div><h3>Make space for feeling good.</h3><div class="hero-card-row"><span>Personalised care</span><strong>At home</strong></div></div><div class="scribble">your time, your space<svg viewBox="0 0 68 35"><path d="M2 7c18 7 36 11 62 7M53 9l11 5-9 8"/></svg></div><div class="art-sticker"><span>15</span>minutes to<br>start your<br>booking</div></div>
+    </div></section>
+
+    <div class="intro-rail"><div class="container"><p class="rail-copy"><strong>Small rituals, big difference.</strong> From a quick tidy-up to a full self-care afternoon.</p><a class="rail-link" href="#book">Find your ritual <span>↘</span></a></div></div>
+
+    <section class="section" id="edit"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">The Naaree edit</span><h2>Care that fits your <em>real life.</em></h2></div><p>No overcomplication. Just considered services, clear prices and a beauty professional who comes to you.</p></div><div class="edit-grid"><article class="edit-card reveal"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=84" alt="Skincare treatment details"><div class="edit-card-content"><span class="tag">01 · Skin</span><h3>Fresh skin, no waiting room.</h3><p>Facials and clean-ups designed around how your skin feels today.</p></div></article><article class="edit-card reveal"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=84" alt="A neat manicure in progress"><div class="edit-card-content"><span class="tag">02 · Hands</span><h3>Little details, lovely finish.</h3><p>Mani-pedi care for the moments when you want to feel put together.</p></div></article><article class="edit-card reveal"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=84" alt="Relaxing wellness treatment"><div class="edit-card-content"><span class="tag">03 · Ritual</span><h3>Slow down, beautifully.</h3><p>Massage and occasion-ready services for a softer kind of reset.</p></div></article></div></div></section>
+
+    <section class="section soft-section" id="how"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">Simple by design</span><h2>Pick. Pin. <em>Feel good.</em></h2></div><p>Your next appointment should take less time to arrange than it does to think about.</p></div><div class="steps"><article class="step reveal"><span class="step-number">01</span><span class="step-icon"><svg viewBox="0 0 24 24"><path d="M5 6.5h14M5 12h10M5 17.5h7"/><circle cx="18" cy="16" r="3"/><path d="m20.2 18.2 1.5 1.5"/></svg></span><h3>Choose your care</h3><p>Browse the edit and tap the services you want to add to your visit.</p></article><article class="step reveal"><span class="step-number">02</span><span class="step-icon"><svg viewBox="0 0 24 24"><path d="M19 10c0 5.5-7 11-7 11S5 15.5 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg></span><h3>Pin your space</h3><p>Start typing your address and select the Google suggestion so we can check the area.</p></article><article class="step reveal"><span class="step-number">03</span><span class="step-icon"><svg viewBox="0 0 24 24"><path d="M20 11.2a7.6 7.6 0 0 1-8 7.6 8.4 8.4 0 0 1-3.4-.7L4 19l.9-4.1a7.7 7.7 0 0 1-.8-3.5 7.6 7.6 0 1 1 15.9-.2Z"/><path d="m8.5 11.5 2.1 2.1 4.8-4.8"/></svg></span><h3>Chat, then exhale</h3><p>We’ll open WhatsApp with your details ready. Confirm your visit there.</p></article></div></div></section>
+
+    <section class="section" id="services"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">The menu</span><h2>Find your <em>kind of care.</em></h2></div><p>Tap a service to add it to your visit. You can choose more than one.</p></div><div class="service-layout"><aside class="service-aside reveal"><div><span class="eyebrow">Browse by mood</span><p>From maintenance to a full reset, start wherever feels right.</p></div><div class="category-list" id="category-list" aria-label="Service categories"></div></aside><div class="service-results reveal"><div class="service-toolbar"><h3 id="service-title">Hair removal</h3><p id="service-count">Tap + to add a service</p></div><div class="service-list" id="service-list"></div></div></div></div></section>
+
+    <section class="section booking-section soft-section" id="book"><div class="container booking-shell"><div class="booking-intro reveal"><span class="eyebrow">Make it yours</span><h2>A little planning for a <em>better feeling.</em></h2><p>Tell us what you’re in the mood for, where you are and when you’d like us to come by. We’ll confirm the details with you on WhatsApp.</p><div class="booking-note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>This is a request, not a payment page. A Naaree team member will confirm availability and the final visit details with you.</span></div></div><div class="booking-card reveal"><div class="booking-card-head"><div><h3>Build your visit</h3><p>Three details, then WhatsApp.</p></div><span class="booking-badge">Wakad only</span></div><form class="booking-form" id="booking-form" novalidate><div class="selected-services" id="selected-services"><p id="selected-placeholder">Your selected services will show here.</p><strong id="selected-total">Rs.0</strong></div><div class="selected-list" id="selected-list"></div><label class="form-label">Your name<input class="form-control" id="customer-name" type="text" autocomplete="name" placeholder="What should we call you?" required></label><div class="address-field"><label class="form-label">Your address<input class="form-control" id="customer-address" type="text" autocomplete="street-address" placeholder="Start with your society or landmark" required></label><div class="suggestions" id="suggestions" role="listbox"></div></div><div class="area-status" id="area-status" role="status"></div><div class="form-row"><label class="form-label">Flat / house no.<input class="form-control" id="customer-flat" type="text" placeholder="e.g. A-204" required></label><label class="form-label">Preferred time<select class="form-control" id="customer-time"><option value="As soon as possible">ASAP</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option><option>7:00 PM</option></select></label></div><div class="form-message" id="form-message" role="alert"></div><button class="button form-submit" type="submit">Request on WhatsApp <span class="arrow">↗</span></button><p class="form-foot">By continuing, you’ll open WhatsApp with your selected services and address details.</p></form></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="footer-top"><h2>Make room for <em>you.</em></h2><div class="footer-contact"><span>Questions or phone booking?</span><a href="tel:+918482839144">84828 39144</a><a href="https://wa.me/919225174813" target="_blank" rel="noopener">WhatsApp us ↗</a><div class="socials"><a class="social" href="https://www.instagram.com/naaree.india?utm_source=qr" target="_blank" rel="noopener" aria-label="Naaree on Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a><a class="social" href="tel:+918482839144" aria-label="Call Naaree"><svg viewBox="0 0 24 24"><path d="M21 16.5v2.2a1.5 1.5 0 0 1-1.7 1.5 15.8 15.8 0 0 1-6.9-2.5 15.4 15.4 0 0 1-4.8-4.8 15.8 15.8 0 0 1-2.5-6.9A1.5 1.5 0 0 1 6.6 4.3h2.2a1.5 1.5 0 0 1 1.5 1.3c.1.8.3 1.6.6 2.3a1.5 1.5 0 0 1-.3 1.6l-.9.9a12.4 12.4 0 0 0 4 4l.9-.9a1.5 1.5 0 0 1 1.6-.3c.7.3 1.5.5 2.3.6a1.5 1.5 0 0 1 1.3 1.5Z"/></svg></a></div></div></div><div class="footer-bottom"><span>© 2026 Naaree · For her, by her</span><span>Datta Mandir Road, Wakad, Pune</span></div></div></footer>
+  <div class="mobile-book"><a class="button button-primary" href="#book">Build my visit <span class="arrow">↗</span></a></div>
+
+  <script>
+    (() => {
+      'use strict';
+      const WA_NUMBER = '919225174813';
+      const GOOGLE_PLACES_KEY = 'AIzaSyBlCo9mCpHcX6xlocC1yPJnKCqppZjkTeg';
+      const OFFICE = { lat: 18.6007375, lng: 73.7597969 };
+      const MAX_RADIUS_KM = 6;
+      const catalog = [
+        { id:'waxing', label:'Hair removal', items:[
+          { id:'full-arms-honey', name:'Full Arms', detail:'Honey wax', price:349 }, { id:'full-arms-gel', name:'Full Arms', detail:'Gel wax', price:399 }, { id:'full-arms-rica', name:'Full Arms', detail:'Rica wax', price:449 }, { id:'half-arms-honey', name:'Half Arms', detail:'Honey wax', price:299 }, { id:'half-legs-honey', name:'Half Legs', detail:'Honey wax', price:349 }, { id:'full-body-honey', name:'Full Body', detail:'Honey wax', price:1299 }, { id:'underarms-rica', name:'Underarms', detail:'Rica wax', price:199 }, { id:'bikini-rica', name:'Bikini line', detail:'Rica wax', price:349 }
+        ]},
+        { id:'skin', label:'Skin & facials', items:[
+          { id:'de-tan', name:'De-Tan Cleanup', detail:'Fresh, even-looking skin', price:929 }, { id:'fruit-cleanup', name:'Fruit Cleanup', detail:'A gentle glow reset', price:729 }, { id:'wine-glow', name:'Wine Glow Facial', detail:'1 hr 15 min · dry skin', price:1249 }, { id:'kumkumadi', name:'Kumkumadi Hydration Facial', detail:'1 hr 20 min · normal to dry', price:1299 }, { id:'o3-shine', name:'O3+ Shine & Glow Facial', detail:'1 hr 20 min · normal to oily', price:1749 }, { id:'korean-hydration', name:'Korean Hydration Facial', detail:'1 hr 20 min · normal to dry', price:1749 }, { id:'glass-skin', name:'FYC Korean Glass Skin', detail:'1 hr 20 min · 9 steps', price:2000 }, { id:'c-kasmara', name:'Casmara Hydration Facial', detail:'1 hr 30 min · all skin types', price:3000 }
+        ]},
+        { id:'hands', label:'Mani & pedi', items:[
+          { id:'classic-mp', name:'Classic Manicure & Pedicure', detail:'A complete tidy-up', price:780 }, { id:'premium-mp', name:'Premium Manicure & Pedicure', detail:'A longer, richer ritual', price:1299 }, { id:'classic-pedi', name:'Classic Pedicure', detail:'Clean, shape, soften', price:599 }, { id:'premium-pedi', name:'Premium Pedicure', detail:'Extra care for tired feet', price:999 }, { id:'classic-mani', name:'Classic Manicure', detail:'Clean, shape, finish', price:499 }, { id:'premium-mani', name:'Premium Manicure', detail:'A polished little reset', price:899 }
+        ]},
+        { id:'massage', label:'Massage & rituals', items:[
+          { id:'scalp', name:'Relaxing Head Massage', detail:'30 min · scalp-focused', price:299 }, { id:'shoulder', name:'Head, Neck & Shoulder Massage', detail:'30 min · unwind gently', price:499 }, { id:'saree', name:'Saree Draping', detail:'Occasion-ready styling', price:399 }
+        ]}
+      ];
+      const state = { category:catalog[0].id, selected:new Map(), selectedCoords:null, confirmingAddress:false, token:makeToken() };
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => [...document.querySelectorAll(selector)];
+      function makeToken(){ if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID(); return `naaree-${Date.now()}-${Math.random().toString(16).slice(2)}`; }
+      function formatMoney(value){ return `Rs.${value.toLocaleString('en-IN')}`; }
+      function currentItems(){ return [...state.selected.values()]; }
+      function total(){ return currentItems().reduce((sum,item) => sum + item.price,0); }
+      function renderCategories(){
+        const list = $('#category-list');
+        list.innerHTML = catalog.map((category) => `<button class="category-btn ${category.id === state.category ? 'active' : ''}" type="button" data-category="${category.id}"><span>${category.label}</span><span>${category.items.length}</span></button>`).join('');
+        $$('.category-btn').forEach((button) => button.addEventListener('click', () => { state.category=button.dataset.category; renderCategories(); renderServices(); }));
+      }
+      function renderServices(){
+        const category = catalog.find((entry) => entry.id === state.category);
+        $('#service-title').textContent = category.label;
+        $('#service-count').textContent = state.selected.size ? `${state.selected.size} selected · ${formatMoney(total())}` : 'Tap + to add a service';
+        $('#service-list').innerHTML = category.items.map((item) => { const isSelected=state.selected.has(item.id); return `<article class="service-item ${isSelected ? 'selected' : ''}" data-item="${item.id}"><div class="service-item-main"><h4>${item.name}</h4><p>${item.detail}</p><span class="service-price">${formatMoney(item.price)}</span></div><button class="add-service" type="button" aria-label="${isSelected ? 'Remove' : 'Add'} ${item.name} ${item.detail}"><svg class="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><svg class="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></button></article>`; }).join('');
+        $$('#service-list .service-item').forEach((card) => { card.querySelector('.add-service').addEventListener('click', () => toggleService(card.dataset.item)); card.addEventListener('click', (event) => { if (!event.target.closest('.add-service')) toggleService(card.dataset.item); }); });
+      }
+      function findItem(id){ for (const category of catalog){ const item=category.items.find((entry)=>entry.id===id); if(item) return item; } return null; }
+      function toggleService(id){ const item=findItem(id); if(!item) return; if(state.selected.has(id)) state.selected.delete(id); else state.selected.set(id,item); renderServices(); renderSelected(); }
+      function renderSelected(){ const items=currentItems(); $('#selected-total').textContent=formatMoney(total()); $('#selected-placeholder').textContent=items.length ? `${items.length} service${items.length===1?'':'s'} selected` : 'Your selected services will show here.'; $('#selected-list').innerHTML=items.map((item)=>`<span class="selected-chip">${item.name} · ${formatMoney(item.price)}</span>`).join(''); }
+      function showMessage(message){ const element=$('#form-message'); element.textContent=message; element.classList.add('show'); }
+      function clearMessage(){ const element=$('#form-message'); element.textContent=''; element.classList.remove('show'); }
+      function setAreaStatus(message,type){ const element=$('#area-status'); element.textContent=message; element.className=`area-status show ${type}`; }
+      function clearAreaStatus(){ const element=$('#area-status'); element.textContent=''; element.className='area-status'; }
+      function haversineKm(a,b){ const radius=6371; const dLat=(b.lat-a.lat)*Math.PI/180; const dLng=(b.lng-a.lng)*Math.PI/180; const lat1=a.lat*Math.PI/180; const lat2=b.lat*Math.PI/180; const value=Math.sin(dLat/2)**2+Math.sin(dLng/2)**2*Math.cos(lat1)*Math.cos(lat2); return radius*2*Math.atan2(Math.sqrt(value),Math.sqrt(1-value)); }
+      function hideSuggestions(){ $('#suggestions').classList.remove('show'); $('#suggestions').innerHTML=''; }
+      function renderSuggestions(suggestions){
+        const list=$('#suggestions'); const predictions=(suggestions||[]).map((entry)=>entry.placePrediction).filter(Boolean); if(!predictions.length){ hideSuggestions(); return; }
+        list.innerHTML='';
+        predictions.forEach((prediction)=>{
+          const button=document.createElement('button');
+          button.className='suggestion';
+          button.type='button';
+          button.textContent=prediction.text?.text||'Suggested place';
+          button.addEventListener('click',()=>{ $('#customer-address').value=button.textContent; hideSuggestions(); fetchPlace(prediction.placeId); });
+          list.appendChild(button);
+        });
+        list.classList.add('show');
+      }
+      async function fetchSuggestions(query){
+        if(!GOOGLE_PLACES_KEY || query.length<3) return hideSuggestions();
+        try{ const response=await fetch('https://places.googleapis.com/v1/places:autocomplete',{method:'POST',headers:{'Content-Type':'application/json','X-Goog-Api-Key':GOOGLE_PLACES_KEY,'X-Goog-FieldMask':'suggestions.placePrediction.placeId,suggestions.placePrediction.text'},body:JSON.stringify({input:query,includedRegionCodes:['in'],sessionToken:state.token,locationBias:{circle:{center:{latitude:OFFICE.lat,longitude:OFFICE.lng},radius:8000}}})}); if(!response.ok) throw new Error('autocomplete failed'); renderSuggestions((await response.json()).suggestions); } catch(error){ hideSuggestions(); }
+      }
+      async function fetchPlace(placeId){
+        state.confirmingAddress=true; setAreaStatus('Checking whether we serve this address…','info');
+        try{ const response=await fetch(`https://places.googleapis.com/v1/places/${placeId}?sessionToken=${encodeURIComponent(state.token)}`,{headers:{'X-Goog-Api-Key':GOOGLE_PLACES_KEY,'X-Goog-FieldMask':'location,formattedAddress'}}); if(!response.ok) throw new Error('place details failed'); const data=await response.json(); if(!data.location) throw new Error('missing location'); state.selectedCoords={lat:data.location.latitude,lng:data.location.longitude}; const distance=haversineKm(OFFICE,state.selectedCoords); if(distance>MAX_RADIUS_KM){ state.selectedCoords=null; setAreaStatus(`That address is about ${distance.toFixed(1)} km away. We’re currently serving Wakad and nearby areas within ${MAX_RADIUS_KM} km.`,'error'); } else setAreaStatus(`You’re in our service area · approximately ${distance.toFixed(1)} km away.`,'success'); } catch(error){ state.selectedCoords=null; setAreaStatus('Please select one of the Google suggestions so we can confirm the service area.','error'); }
+        state.confirmingAddress=false; state.token=makeToken();
+      }
+      function wireAddress(){ const input=$('#customer-address'); let timer; input.addEventListener('input',()=>{ state.selectedCoords=null; clearAreaStatus(); clearTimeout(timer); const query=input.value.trim(); if(query.length<3) return hideSuggestions(); timer=setTimeout(()=>fetchSuggestions(query),320); }); document.addEventListener('click',(event)=>{ if(!event.target.closest('.address-field')) hideSuggestions(); }); }
+      function wireForm(){
+        $('#booking-form').addEventListener('submit',(event)=>{ event.preventDefault(); clearMessage(); const items=currentItems(); const name=$('#customer-name').value.trim(); const address=$('#customer-address').value.trim(); const flat=$('#customer-flat').value.trim(); const time=$('#customer-time').value; if(!items.length){ showMessage('Choose at least one service from the menu above.'); document.querySelector('#services').scrollIntoView({behavior:'smooth'}); return; } if(!name||!flat||!address){ showMessage('Please add your name, address and flat / house number.'); return; } if(state.confirmingAddress){ showMessage('We’re still checking the address. Please try again in a moment.'); return; } if(!state.selectedCoords){ showMessage('Please select your address from the Google suggestions so we can confirm the area.'); return; } const serviceLines=items.map((item)=>`• ${item.name} (${item.detail}) — ${formatMoney(item.price)}`); const fullAddress=`${flat}, ${address}`; const mapsLink=`https://www.google.com/maps/search/?api=1&query=${state.selectedCoords.lat},${state.selectedCoords.lng}`; const message=`Hi Naaree! I’d like to book an at-home visit. 👋\n\n*Name:* ${name}\n*Services:*\n${serviceLines.join('\n')}\n*Total:* ${formatMoney(total())}\n*Preferred time:* ${time}\n\n*Address:*\n${fullAddress}\n📍 ${mapsLink}`; window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`,'_blank','noopener'); });
+      }
+      function wireNavigation(){ const nav=$('#site-nav'); $('#nav-toggle').addEventListener('click',()=>{ const open=nav.classList.toggle('mobile-open'); $('#nav-toggle').setAttribute('aria-expanded',String(open)); }); $$('.nav-links a').forEach((link)=>link.addEventListener('click',()=>{ nav.classList.remove('mobile-open'); $('#nav-toggle').setAttribute('aria-expanded','false'); })); }
+      function wireReveal(){ const elements=$$('.reveal'); if(!('IntersectionObserver' in window)){ elements.forEach((element)=>element.classList.add('visible')); return; } const observer=new IntersectionObserver((entries)=>entries.forEach((entry)=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }),{threshold:.12}); elements.forEach((element)=>observer.observe(element)); }
+      renderCategories(); renderServices(); renderSelected(); wireAddress(); wireForm(); wireNavigation(); wireReveal();
+    })();
+  </script>
+</body>
+</html>
